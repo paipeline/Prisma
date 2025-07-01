@@ -9,17 +9,6 @@ Prisma takes automation to the next level by not just executing predefined workf
 ## How It Works
 
 1. **One Query, Complete Automation**: Simply describe what you want to automate in natural language
-2. **Intelligent Flow Generation**: Prisma analyzes your request and automatically creates the entire automation flow
-3. **Tool Creation**: Dynamically generates and configures necessary tools for your workflow
-4. **Ready to Run**: Your automation is immediately ready to use - no manual setup required
-
-For example:
-```text
-"Create a workflow that monitors my Gmail for invoices, extracts the amounts, and updates a Google Sheet"
-```
-Prisma will be executed automatically:
-- Create email monitoring tools
-- Set up invoice parsing capabilities
-- Configure Google Sheets integration
-- Build and deploy the complete workflow
-- Save workflow as a template for future use
+3. **Tool Creation**: Dynamically generates and configures necessary tools for your workflow, no need to create them manually like in n8n.
+4. **API Keys**: Ask for API keys and other credentials if needed, Prisma will handle the rest.
+5. **Ready to Run**: Your automation is immediately ready to use - no manual setup required
