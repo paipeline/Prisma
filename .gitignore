@@ -33,5 +33,5 @@ Thumbs.db
 .env
 .streamlit/
 .serena
-.runs
-.logs
+runs/
+logs/
