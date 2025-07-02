@@ -1,0 +1,1 @@
+{'camera': < cv2.VideoCapture 0x10529b6d0>, 'success': True, 'message': 'Camera successfully initialized'}

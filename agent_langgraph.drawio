@@ -1,0 +1,158 @@
+<mxfile host="app.diagrams.net" modified="2025-07-02T12:50:00Z" agent="AI-Assistant">
+  <diagram name="Agent LangGraph" id="Agent-LangGraph">
+    <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Vertical Main Flow -->
+        <mxCell id="plan" value="plan" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="20" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="maybe" value="maybe_request_user_input" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="100" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="next_subtask" value="next_subtask" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="180" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="resolve" value="resolve" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="260" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Left Execution Branch -->
+        <mxCell id="prepare_args" value="prepare_args" style="rounded=1;fillColor=#ffd7a7;strokeColor=#d79b00;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="execute" value="execute" style="rounded=1;fillColor=#ffd7a7;strokeColor=#d79b00;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="200" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Right Capability Branch -->
+        <mxCell id="brainstorm" value="brainstorm" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="530" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="research" value="research" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="530" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="generate" value="generate" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="530" y="500" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="validate" value="validate" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="530" y="580" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="register" value="register" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="530" y="660" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Completion & Failure -->
+        <mxCell id="finish" value="finish" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="740" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="review" value="review" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="820" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fail" value="fail" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="40" y="820" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Reuse existing edges unchanged -->
+        <!-- Linear Edges -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#000000;" edge="1" parent="1" source="plan" target="maybe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#000000;" edge="1" parent="1" source="maybe" target="next_subtask">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#000000;" edge="1" parent="1" source="next_subtask" target="resolve">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Conditional edges preserve -> existing definitions same as before -->
+        <!-- resolve conditionals -->
+        <mxCell value="cache" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#6c8ebf;fontSize=9;" edge="1" parent="1" source="resolve" target="finish">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="existing" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#6c8ebf;fontSize=9;" edge="1" parent="1" source="resolve" target="prepare_args">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="create" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#6c8ebf;fontSize=9;" edge="1" parent="1" source="resolve" target="brainstorm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- brainstorm conditionals -->
+        <mxCell value="continue" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="brainstorm" target="research">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="fail" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="brainstorm" target="fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- research -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;" edge="1" parent="1" source="research" target="generate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- generate conditionals -->
+        <mxCell value="research" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="generate" target="research">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="validate" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="generate" target="validate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="fail" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="generate" target="fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- validate conditionals -->
+        <mxCell value="register" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="validate" target="register">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="retry" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="validate" target="generate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="fail" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="validate" target="fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- register to finish -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#6c8ebf;" edge="1" parent="1" source="register" target="finish">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- prepare_args conditionals -->
+        <mxCell value="execute" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d79b00;fontSize=9;" edge="1" parent="1" source="prepare_args" target="execute">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="fail" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d79b00;fontSize=9;" edge="1" parent="1" source="prepare_args" target="fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- execute to finish -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#d79b00;" edge="1" parent="1" source="execute" target="finish">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- finish conditionals -->
+        <mxCell value="next" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#9673a6;fontSize=9;" edge="1" parent="1" source="finish" target="next_subtask">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="review" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#9673a6;fontSize=9;" edge="1" parent="1" source="finish" target="review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- review conditionals -->
+        <mxCell value="plan" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#9673a6;fontSize=9;" edge="1" parent="1" source="review" target="plan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell value="fail" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#9673a6;fontSize=9;" edge="1" parent="1" source="review" target="fail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- fail conditionals -->
+        <mxCell value="retry" style="edgeStyle=orthogonalEdgeStyle;endArrow=classic;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="fail" target="next_subtask">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

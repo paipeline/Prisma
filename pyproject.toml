@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "prisma"
+version = "0.1.0"
+description = "Prisma - A CodeReAct Workflow System"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "httpx",
+    "pydantic",
+    "uvicorn",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "langchain-core",
+    "langchain-community",
+    "langchain-litellm>=0.0.1,<0.2.0",
+    "litellm>=1.65.1,<2.0.0",
+    "python-dotenv",
+    "langgraph>=0.4.8,<0.5.0",
+    "langgraph-studio>=0.4.8,<0.5.0",
+    "mcp[cli]>=1.10.1",
+    "langgraph-runtime-inmem>=0.4.8,<0.5.0",
+    "langgraph-api>=0.4.8,<0.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.3.0",
+    "isort>=5.13.2",
+    "mypy>=1.9.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"] 

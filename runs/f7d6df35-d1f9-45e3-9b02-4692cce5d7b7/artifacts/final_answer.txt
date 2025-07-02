@@ -1,0 +1,8 @@
+Combined results:
+{'camera': < cv2.VideoCapture 0x10473f6d0>, 'success': True, 'message': 'Camera successfully initialized'}
+
+---
+{'camera': < cv2.VideoCapture 0x10473f6d0>, 'success': True, 'message': 'Camera successfully initialized'}
+
+---
+{'camera': < cv2.VideoCapture 0x10473f6d0>, 'success': True, 'message': 'Camera successfully initialized'}

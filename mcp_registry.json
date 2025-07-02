@@ -1,0 +1,67 @@
+[
+    {
+        "name": "check_camera_access",
+        "description": "Checks if camera access is available using OpenCV",
+        "code": "# packages: opencv-python\nimport cv2\n\ndef check_camera_access() -> dict:\n    \"\"\"\n    Checks if camera access is available using OpenCV.\n    \n    Returns:\n        dict: A dictionary containing a boolean indicating camera availability.\n    \"\"\"\n    try:\n        # Attempt to open the default camera (index 0)\n        cap = cv2.VideoCapture(0)\n        # Immediately release the camera\n        cap.release()\n        return {\"is_available\": True}\n    except Exception:\n        # If any exception occurs, camera access is not available\n        return {\"is_available\": False}",
+        "input": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        },
+        "output": {
+            "type": "object",
+            "properties": {
+                "is_available": {
+                    "type": "boolean",
+                    "description": "True if camera access is available, False otherwise"
+                }
+            }
+        },
+        "packages": [
+            "opencv-python"
+        ],
+        "system_packages": []
+    },
+    {
+        "name": "start_camera_operation",
+        "description": "Initializes and starts camera operation using OpenCV VideoCapture",
+        "code": "# packages: opencv-python\nimport cv2\n\ndef start_camera_operation(camera_index: int, start_capture: bool = True) -> dict:\n    \"\"\"\n    Initializes and starts camera operation using OpenCV VideoCapture.\n    \n    Args:\n        camera_index (int): The index of the camera to use\n        start_capture (bool): Whether to start video capture immediately. Defaults to True.\n    \n    Returns:\n        dict: A dictionary containing the camera object, success status, and message\n    \"\"\"\n    cap = cv2.VideoCapture(camera_index)\n    success = cap.isOpened()\n    message = \"Camera successfully initialized\" if success else \"Failed to initialize camera\"\n    \n    if success and start_capture:\n        # Attempt to read a frame to start capture\n        ret = cap.read()\n        if not ret:\n            success = False\n            message = \"Failed to start video capture\"\n    \n    return {\n        \"camera\": cap,\n        \"success\": success,\n        \"message\": message\n    }",
+        "input": {
+            "type": "object",
+            "properties": {
+                "camera_index": {
+                    "type": "number",
+                    "description": "The index of the camera to use (default is 0)"
+                },
+                "start_capture": {
+                    "type": "boolean",
+                    "description": "Whether to start video capture immediately (default is true)"
+                }
+            },
+            "required": [
+                "camera_index"
+            ]
+        },
+        "output": {
+            "type": "object",
+            "properties": {
+                "camera": {
+                    "type": "object",
+                    "description": "The OpenCV VideoCapture object"
+                },
+                "success": {
+                    "type": "boolean",
+                    "description": "Whether the camera was successfully initialized"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Status message or error description"
+                }
+            }
+        },
+        "packages": [
+            "opencv-python"
+        ],
+        "system_packages": []
+    }
+]
