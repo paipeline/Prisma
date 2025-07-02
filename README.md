@@ -1,4 +1,4 @@
-# Prisma
+# Prisma (Unstable and in development)
 ### Automate the automation.
 <img src="prisma logo.png" alt="Prisma Logo"/>
 
@@ -23,4 +23,55 @@ Prisma will be executed automatically:
 - Configure Google Sheets integration
 - Build and deploy the complete workflow
 - Save workflow as a template for future use
+
+## Getting Started
+
+### Prerequisites
+- Python 3.10 or higher
+- [uv](https://github.com/astral-sh/uv) - Fast Python package installer and resolver
+
+### Setup Instructions
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/Prisma.git
+cd Prisma
+```
+
+2. Create a virtual environment and install dependencies using uv:
+```bash
+uv venv
+source .venv/bin/activate  # On Unix/macOS
+# or
+.venv\Scripts\activate     # On Windows
+
+# Install project dependencies
+uv pip install -e .
+
+# Optional: Install development dependencies
+uv pip install -e ".[dev]"
+```
+
+### Running Prisma
+
+There are several ways to run Prisma in interactive mode:
+
+1. As a Python import:
+```python
+from src.core.prisma import Prisma
+
+# Initialize Prisma in interactive mode
+prisma = Prisma(interactive_mode=True)
+
+# Example: Create a simple automation
+response = prisma.run(
+    "Create a workflow that sends a daily weather report to my email"
+)
+print(response)
+```
+
+2. Using the Python module syntax:
+```bash
+python -m src.core.prisma
+```
 
