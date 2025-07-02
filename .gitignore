@@ -29,6 +29,7 @@ htmlcov/
 Thumbs.db
 
 .prisma
+.langgraph_api
 .to_github.sh
 .env
 .streamlit/
